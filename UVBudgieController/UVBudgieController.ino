@@ -29,6 +29,8 @@
   Audio clips are in ./audio - connect your sound board to your PC
   and copy the clips to the mounted drive
 
+  Hold down demo button to enter Demo Mode durring reset
+
   Author: Peter Milne
   Date: 29 June 2022
 
@@ -45,7 +47,7 @@
 #include "UVBudgie.h"
 #include "UVBudgieDisplay.h"
 
-const char* soft_version = "1.0.0";
+const char* soft_version = "1.0.1";
 
 #define FCST_INTERVAL 60 * 60000  // 60 mins
 #define DEMO_DELAY 10 * 1000  // 10 sec
@@ -108,9 +110,11 @@ void setup() {
   rightButton.onPressedFor(2000, audio);  // Long press toggles audio
   leftButton.begin();
   // Long press triggers demo - press reset to leave demo mode
-  leftButton.onPressedFor(2000, demo);
+  //  leftButton.onPressedFor(2000, demo);
+  leftButton.onPressed(demo);
   demoButton.begin();
-  demoButton.onPressedFor(2000, demo);
+  //  demoButton.onPressedFor(2000, demo);
+  demoButton.onPressed(demo);
 
   epd.initDisplay();
   epd.showGreeting();
@@ -123,6 +127,13 @@ void setup() {
 
   myBudgie.init(SERVO, WINGS_DOWN);
   myBudgie.doAction(epd.audioOn);
+
+  leftButton.read();
+  demoButton.read();
+  if (leftButton.isPressed() || demoButton.isPressed()) {
+    epd.demoOn = true;
+  }
+
   delay(5000);
 }
 
@@ -130,6 +141,7 @@ void loop() {
   // Continuously update the button states
   rightButton.read();
   leftButton.read();
+  demoButton.read();
 
   if (!epd.demoOn) {  // Standard mode
     if (WiFi.status() != WL_CONNECTED) {
