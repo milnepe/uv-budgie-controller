@@ -12,16 +12,16 @@
   #define SECRET_PASS "YOUR_WIFI_PASSWORD"
   #define API_KEY "YOUR_MET_OFFICE_API_KEY"
 
+  Set your local UK weather station by editing the STATION_ID macro:
+  #define STATION_ID "354272"  // Witney, UK
+  consult the DataPoint documentation:
+  https://www.metoffice.gov.uk/services/data/datapoint/getting-started
+
   Set the interval between looks-ups by adjusting:
   #define FCST_INTERVAL 60 * 60000  // 60 mins
 
   Set the demo mode interval by adjusting:
   #define DEMO_DELAY 10 * 1000  // 10 sec
-
-  Set your local UK weather station by editing the STATION macro:
-  #define STATION "354272"  // Witney, UK
-  consult the DataPoint documentation:
-  https://www.metoffice.gov.uk/services/data/datapoint/getting-started
 
   Servo settings will need to be adjusted for your Budgie - they are
   found in "UVBudgie,h"
@@ -32,7 +32,7 @@
   Hold down demo button to enter Demo Mode durring reset
 
   Author: Peter Milne
-  Date: 29 June 2022
+  Date: 12 July 2022
 
   Copyright 2022 Peter Milne
   Released under GNU GENERAL PUBLIC LICENSE
@@ -47,11 +47,10 @@
 #include "UVBudgie.h"
 #include "UVBudgieDisplay.h"
 
-const char* soft_version = "1.0.1";
+const char* soft_version = "1.0.2";
 
 #define FCST_INTERVAL 60 * 60000  // 60 mins
 #define DEMO_DELAY 10 * 1000  // 10 sec
-#define STATION "354272"  // Witney, UK
 
 #define SERVO 0  // Flapping servo
 #define SERVO_FREQ 50 // Analog servos run at ~50 Hz
@@ -232,7 +231,7 @@ void getData() {
   }
 
   // Send HTTP request
-  client.println("GET /public/data/val/wxfcs/all/json/" STATION
+  client.println("GET /public/data/val/wxfcs/all/json/" STATION_ID
                  "?res=3hourly&key=" API_KEY " HTTP/1.0");
   client.println("Host: datapoint.metoffice.gov.uk");
   client.println("Connection: close");
