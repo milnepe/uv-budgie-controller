@@ -14,7 +14,7 @@ cd uv-budgie-controller/scripts
 ```
 2. List the Met Office Unitary Authority Areas:
 ```
-python3 areas.py '<your-key>'
+python3 areas.py '<your-api-key>'
 
 ...
 Greater London
@@ -26,7 +26,7 @@ Halton
 ```
 3. List the weather stations in a particular Area:
 ```
-python3 areas.py '<your-key>' 'Greater London'
+python3 areas.py '<your-api-key>' 'Greater London'
 
 ...
 354071 Walthamstow
@@ -38,11 +38,11 @@ python3 areas.py '<your-key>' 'Greater London'
 354365 Qpr F.C.
 ...
 ```
-4. Edit the file named "arduino_secrets.h" in the uv-budgie-controller directory substituting your own information:
+4. Edit the file named "arduino_secrets.h" in the UVBudgieController directory substituting your own information:
 ```
-#define SECRET_SSID "YOURSSID"
-#define SECRET_PASS "YOURWIFI_PASSWORD"
-#define API_KEY "YOUR_API_KEY"
-#define STATION_ID "YOUR_STATION_ID"
+#define SECRET_SSID "<your-ssid>"
+#define SECRET_PASS "<your-wifi-password>"
+#define API_KEY "<your-api-key>"
+#define STATION_ID "<your-weather-station-id>"
 ```
 5. Flash the Arduino
