@@ -32,7 +32,7 @@
   Hold down demo button to enter Demo Mode durring reset
 
   Author: Peter Milne
-  Date: 12 July 2022
+  Date: 13 July 2022
 
   Copyright 2022 Peter Milne
   Released under GNU GENERAL PUBLIC LICENSE
@@ -47,7 +47,7 @@
 #include "UVBudgie.h"
 #include "UVBudgieDisplay.h"
 
-const char* soft_version = "1.0.2";
+const char* soft_version = "1.0.3";
 
 #define FCST_INTERVAL 60 * 60000  // 60 mins
 #define DEMO_DELAY 10 * 1000  // 10 sec
