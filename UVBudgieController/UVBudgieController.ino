@@ -97,8 +97,6 @@ void setup() {
   //    ; // wait for serial port to connect. Needed for native USB port only
   //  }
   delay(2000);
-  Serial.print("Starting Metoffice client version: ");
-  Serial.println(soft_version);
 
   // Serial 1 used for sound board at 9600 baud
   Serial1.begin(9600);
@@ -135,7 +133,9 @@ void setup() {
     epd.demoOn = true;
   }
 
-  delay(5000);
+  Serial.print("Starting Metoffice client version: ");
+  Serial.println(soft_version);
+  delay(12000);
 }
 
 void loop() {
