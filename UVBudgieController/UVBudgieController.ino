@@ -47,7 +47,7 @@
 #include "UVBudgie.h"
 #include "UVBudgieDisplay.h"
 
-const char* soft_version = "1.0.3";
+const char* soft_version = "1.0.4";
 
 #define FCST_INTERVAL 60 * 60000  // 60 mins
 #define DEMO_DELAY 10 * 1000  // 10 sec
