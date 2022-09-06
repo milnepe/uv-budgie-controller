@@ -81,7 +81,7 @@ boolean playBackFlag = false;
 enum buttons {RIGHT_BUTTON = 2, LEFT_BUTTON = 3, DEMO_BUTTON = 9};
 EasyButton rightButton(RIGHT_BUTTON);
 EasyButton leftButton(LEFT_BUTTON);
-EasyButton demoButton(DEMO_BUTTON);  // External demo button
+//EasyButton demoButton(DEMO_BUTTON);  // External demo button
 
 void setup() {
   pinMode(wifiLed, OUTPUT);
@@ -108,12 +108,10 @@ void setup() {
   rightButton.onPressed(playback);  // Short press triggers playback
   rightButton.onPressedFor(2000, audio);  // Long press toggles audio
   leftButton.begin();
-  // Long press triggers demo - press reset to leave demo mode
-  //  leftButton.onPressedFor(2000, demo);
-  leftButton.onPressed(demo);
-  demoButton.begin();
-  //  demoButton.onPressedFor(2000, demo);
-  demoButton.onPressed(demo);
+  leftButton.onPressed(demo);  // Short press for demo
+  //demoButton.begin();
+  //demoButton.onPressed(demo); // Short press external button for demo
+  // Press reset button (middle) to exit demo 
 
   epd.initDisplay();
   epd.showGreeting();
@@ -128,8 +126,9 @@ void setup() {
   myBudgie.doAction(epd.audioOn);
 
   leftButton.read();
-  demoButton.read();
-  if (leftButton.isPressed() || demoButton.isPressed()) {
+  //demoButton.read();
+  //if (leftButton.isPressed() || demoButton.isPressed()) {  
+  if (leftButton.isPressed()) {
     epd.demoOn = true;
   }
 
@@ -140,7 +139,7 @@ void loop() {
   // Continuously update the button states
   rightButton.read();
   leftButton.read();
-  demoButton.read();
+  //demoButton.read();
 
   if (!epd.demoOn) {  // Standard mode
     if (WiFi.status() != WL_CONNECTED) {

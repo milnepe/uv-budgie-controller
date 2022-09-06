@@ -24,12 +24,12 @@ int UVBudgie::doAction(boolean audio) {
       StartPos(WINGS_DOWN);
       break;
     case 1:  // UV 0
-      Tweet(NO_PROTECTION, audio);
+      Tweet(NO_PROTECTION_A, audio);
       Serial.println("Wings down");
       StartPos(WINGS_DOWN);
       break;
     case 2:  // UV 1 - 2
-      Tweet(NO_PROTECTION, audio);
+      Tweet(NO_PROTECTION_B, audio);
       Serial.println("Wings down");
       StartPos(WINGS_DOWN);
       break;

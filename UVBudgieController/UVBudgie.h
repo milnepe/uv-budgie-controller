@@ -15,11 +15,12 @@
 #define DEAD_POS 350  // Min position
 
 // Audio track numbers
-#define CHEEP_CHEEP 0
-#define NO_PROTECTION 1
-#define SOME_PROTECTION 2
-#define PROTECTION_ESSENTIAL 3
-#define EXTRA_PROTECTION 4
+#define CHEEP_CHEEP 0           // T00.ogg
+#define NO_PROTECTION_A 1       // T01.ogg
+#define NO_PROTECTION_B 2       // T02.ogg
+#define SOME_PROTECTION 3       // T03.ogg
+#define PROTECTION_ESSENTIAL 4  // T04.ogg
+#define EXTRA_PROTECTION 5      // T05.ogg
 
 #define DATESTR_LEN 12  // "2022-06-15Z"
 
