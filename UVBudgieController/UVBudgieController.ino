@@ -74,14 +74,18 @@ UVBudgieDisplay epd = UVBudgieDisplay(&myBudgie);
 
 int status = WL_IDLE_STATUS;
 boolean updateDisplayFlag = false;
-const int wifiLed = 9;  // Optional debug LED (Green - On if connected)
 unsigned long lastReconnectAttempt = 0;
 boolean playBackFlag = false;
 
-enum buttons {RIGHT_BUTTON = 2, LEFT_BUTTON = 3, DEMO_BUTTON = 9};
-EasyButton rightButton(RIGHT_BUTTON);
-EasyButton leftButton(LEFT_BUTTON);
-//EasyButton demoButton(DEMO_BUTTON);  // External demo button
+// Define pins
+const int wifiLed = 10;  // Optional debug LED (Green - On if connected)
+const int rButton = 2;
+const int lButton = 3;
+const int dButton = 9;
+
+EasyButton rightButton(rButton);  // RH button
+EasyButton leftButton(lButton);  // LH button
+EasyButton demoButton(dButton);  // External demo button
 
 void setup() {
   pinMode(wifiLed, OUTPUT);
@@ -109,8 +113,8 @@ void setup() {
   rightButton.onPressedFor(2000, audio);  // Long press toggles audio
   leftButton.begin();
   leftButton.onPressed(demo);  // Short press for demo
-  //demoButton.begin();
-  //demoButton.onPressed(demo); // Short press external button for demo
+  demoButton.begin();
+  demoButton.onPressed(demo); // Short press external button for demo
   // Press reset button (middle) to exit demo 
 
   epd.initDisplay();
@@ -126,9 +130,8 @@ void setup() {
   myBudgie.doAction(epd.audioOn);
 
   leftButton.read();
-  //demoButton.read();
-  //if (leftButton.isPressed() || demoButton.isPressed()) {  
-  if (leftButton.isPressed()) {
+  demoButton.read();
+  if (leftButton.isPressed() || demoButton.isPressed()) {  
     epd.demoOn = true;
   }
 
@@ -139,7 +142,7 @@ void loop() {
   // Continuously update the button states
   rightButton.read();
   leftButton.read();
-  //demoButton.read();
+  demoButton.read();
 
   if (!epd.demoOn) {  // Standard mode
     if (WiFi.status() != WL_CONNECTED) {
