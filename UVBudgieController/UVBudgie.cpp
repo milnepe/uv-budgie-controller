@@ -31,12 +31,12 @@ int UVBudgie::doAction(boolean audio) {
     case 2:  // UV 1 - 2
       Tweet(NO_PROTECTION_B, audio);
       Serial.println("Wings down");
-      StartPos(WINGS_DOWN);
+      Flap(WINGS_DOWN, WINGS_UP_A_BIT, VSLOW, 3);
       break;
     case 3:  // UV 3 - 5
       Tweet(SOME_PROTECTION, audio);
       Serial.println("Wings down, wings up a bit");
-      Flap(WINGS_DOWN, WINGS_UP_A_BIT, VSLOW, 3);
+      Flap(WINGS_DOWN, WINGS_UP_A_BIT, SLOW, 3);
       break;
     case 4:  // UV 6 - 7
       Tweet(PROTECTION_ESSENTIAL, audio);

@@ -8,7 +8,7 @@
 // If the servo is chattering at the end positions,
 // adjust the min or max value by 5ish
 #define WINGS_START 470
-#define WINGS_DOWN 480  // Max position
+#define WINGS_DOWN 460  // Max position
 #define WINGS_UP_A_BIT 420
 #define WINGS_UP_A_LOT 400
 #define PASS_OUT_POS 380
