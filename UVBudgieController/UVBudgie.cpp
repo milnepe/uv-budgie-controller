@@ -19,34 +19,34 @@ int UVBudgie::doAction(boolean audio) {
   Serial.println(state);
   switch (state) {
     case 0:  // init
-      Tweet(CHEEP_CHEEP, audio);
       Serial.println("Wings down");
       StartPos(WINGS_DOWN);
+      Tweet(CHEEP_CHEEP, audio);      
       break;
     case 1:  // UV 0
-      Tweet(NO_PROTECTION_A, audio);
       Serial.println("Wings down");
       StartPos(WINGS_DOWN);
+      Tweet(NO_PROTECTION_A, audio);
       break;
     case 2:  // UV 1 - 2
-      Tweet(NO_PROTECTION_B, audio);
       Serial.println("Wings down");
       Flap(WINGS_DOWN, WINGS_UP_A_BIT, VSLOW, 3);
+      Tweet(NO_PROTECTION_B, audio);
       break;
     case 3:  // UV 3 - 5
-      Tweet(SOME_PROTECTION, audio);
       Serial.println("Wings down, wings up a bit");
       Flap(WINGS_DOWN, WINGS_UP_A_BIT, SLOW, 3);
+      Tweet(SOME_PROTECTION, audio);
       break;
     case 4:  // UV 6 - 7
-      Tweet(PROTECTION_ESSENTIAL, audio);
       Serial.println("Wings down, wings up a lot");
       Flap(WINGS_DOWN, WINGS_UP_A_LOT, FAST, 4);
+      Tweet(PROTECTION_ESSENTIAL, audio);
       break;
     case 5:  // UV 8 plus
-      Tweet(EXTRA_PROTECTION, audio);
       Serial.println("Wings pass out");
       PassOut(PASS_OUT_POS, FAST);
+      Tweet(EXTRA_PROTECTION, audio);
       //while (1);// Program ends!! Reboot
   }
   return state;
